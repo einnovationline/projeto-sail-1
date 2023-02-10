@@ -1,0 +1,55 @@
+{
+	"folders": {},
+	"connections": {
+		"mysql8-186338fbdae-14cfd860e084d262": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "projeto_sail_1",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "projeto_sail_1",
+				"url": "jdbc:mysql://localhost:3306/projeto_sail_1",
+				"configurationType": "MANUAL",
+				"home": "mysql_client",
+				"type": "dev",
+				"properties": {
+					"connectTimeout": "20000",
+					"rewriteBatchedStatements": "true",
+					"enabledTLSProtocols": "TLSv1,TLSv1.1,TLSv1.2",
+					"allowPublicKeyRetrieval": "TRUE",
+					"useSSL": "FALSE"
+				},
+				"auth-model": "native"
+			}
+		},
+		"mysql8-18637fc261e-1a45f22a15fda165": {
+			"provider": "mysql",
+			"driver": "mysql8",
+			"name": "projeto_sail_1 2",
+			"save-password": true,
+			"configuration": {
+				"host": "localhost",
+				"port": "3306",
+				"database": "projeto_sail_1",
+				"url": "jdbc:mysql://localhost:3306/projeto_sail_1",
+				"configurationType": "MANUAL",
+				"home": "mysql_client",
+				"type": "dev",
+				"auth-model": "native"
+			}
+		}
+	},
+	"connection-types": {
+		"dev": {
+			"name": "Development",
+			"color": "255,255,255",
+			"description": "Regular development database",
+			"auto-commit": true,
+			"confirm-execute": false,
+			"confirm-data-change": false,
+			"auto-close-transactions": false
+		}
+	}
+}
