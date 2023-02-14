@@ -1,10 +1,10 @@
 @extends('layout.app')
 
-@section('title', 'Listagem dos Usuários')
+@section('title', "Comentários do Usuário {$user->name}")
 
 @section('content')
     <h1>
-        Listagem dos Usuários Cadastrados
+        Comentários do Usuário - {{ $user->name }}
         (<a href="{{ route('users.create')}}"> inserir </a>)
     </h1>
 
@@ -14,16 +14,13 @@
     </form>
 
     <ul>
-        @foreach ($users as $user)
+        @foreach ($comments as $comment)
             <li>
                 | <a href="{{ route('users.show', $user->id) }}">{{ $user->name}}</a>
                 <form action="{{ route('users.edit', $user->id) }}" method="get">
                     <button type="submit">Editar</button>
                 </form>
-                <form action="{{ route('comments.index', $user->id) }}" method="get">
-                    <button type="submit">Comentários (0)</button>
-                </form>
-                <form action="{{ route('users.destroy', $user->id) }}" method="post">
+                    <form action="{{ route('users.destroy', $user->id) }}" method="post">
                     @method('DELETE')
                     @csrf
                     <button type="submit">Deletar</button>

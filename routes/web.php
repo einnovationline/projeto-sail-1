@@ -4,10 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     UserController
 };
+use App\Http\Controllers\Admin\CommentController;
 
 Route::get('/', function () {
     return view('welcome');
 });
+
+route::get('/users/{id}/comments', [CommentController::class, 'index'])->name('comments.index');
 
 route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
 route::put('/users/{id}', [UserController::class, 'update'])->name('users.update');
