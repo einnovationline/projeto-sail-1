@@ -43,7 +43,7 @@ class UserController extends Controller{
     public function destroy($id){
         if (!$user = $this->model->find($id))
             return redirect()->route('users.index');
-        $user->delete();
+        $user->delete();//apagar um usuario caso ele tiver comentário  onDelete("CASCADE");
 
         return redirect()->route('users.index');
     }

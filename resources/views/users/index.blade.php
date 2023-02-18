@@ -21,7 +21,7 @@
                     <button type="submit">Editar</button>
                 </form>
                 <form action="{{ route('comments.index', $user->id) }}" method="get">
-                    <button type="submit">Comentários (0)</button>
+                    <button type="submit">Comentários ({{ $user->comments->count() }})</button><!-- model user, método comments-->
                 </form>
                 <form action="{{ route('users.destroy', $user->id) }}" method="post">
                     @method('DELETE')

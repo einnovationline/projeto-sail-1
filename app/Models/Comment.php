@@ -13,8 +13,20 @@ class Comment extends Model {
     protected $fillable = ['body','visible'];
     protected $casts = ['visible' => 'boolean'];
 
+    //criado na aula https://academy.especializati.com.br/aula/criar-model-migration-e-relacionamentos-de-comentarios-no-laravel
     public function user () {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(User::class);//pega da entidade mais fraca/dependente para o pai/forte.
     }
+
+    public function getComments(string|null $search = null){
+        $comments = $this->where(function ($query) use($search) {
+            if ($search) {
+                $query->where('body', 'LIKE', "%{$search}%");
+            }
+        })->get();
+
+        return $comments;
+    }
+
 
 }

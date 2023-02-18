@@ -8,8 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
-class User extends Authenticatable
-{
+class User extends Authenticatable {
     use HasApiTokens, HasFactory, Notifiable;
 
     /**
@@ -48,14 +47,15 @@ class User extends Authenticatable
                 $query->where('email', 'LIKE', "%{$search}%");//senão colocar o like e por '=' ou nada, e tirar o % e deixar somente o $search vai procurar o texto exato
                 $query->orWhere('name', 'LIKE', "%{$search}%");
             }
-       })->get();
+       })->with('comments')//está trazendo da function comments todos os comentários, não sendo necessária outras consultas.
+       ->get();
 
        return $users;
     }
 
     public function comments() {
 
-        return $this->hasMany(Comment::class);
+        return $this->hasMany(Comment::class);//one to many --> 1 pra muitos, 1 user(model) tem vários comments
     }
 
 }

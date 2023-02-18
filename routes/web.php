@@ -10,6 +10,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+route::delete('/users/comments/{id}', [CommentController::class, 'destroy'])->name('comments.destroy');
+route::get('/users/{id}/comments/create', [CommentController::class, 'create'])->name('comments.create');
+route::get('/users/{user}/comments/{id}/', [CommentController::class, 'edit'])->name('comments.edit');//tive um erro de caracteres estranhos pois no {id} estava (id}
+route::put('/users/comments/{id}/', [CommentController::class, 'update'])->name('comments.update');
+route::post('/users/{id}/comments/', [CommentController::class, 'store'])->name('comments.store');
 route::get('/users/{id}/comments', [CommentController::class, 'index'])->name('comments.index');
 
 route::delete('/users/{id}', [UserController::class, 'destroy'])->name('users.destroy');
