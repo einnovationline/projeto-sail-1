@@ -37,9 +37,7 @@ class User extends Authenticatable {
      *
      * @var array<string, string>
      */
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-    ];
+    protected $casts = ['email_verified_at' => 'datetime',];
 
     public function getUsers(string|null $search = null){
         $users = $this->where(function ($query) use($search) {
@@ -48,7 +46,8 @@ class User extends Authenticatable {
                 $query->orWhere('name', 'LIKE', "%{$search}%");
             }
        })->with('comments')//está trazendo da function comments todos os comentários, não sendo necessária outras consultas.
-       ->get();
+       //->get();aqui era antes da paginação
+       ->paginate(1);
 
        return $users;
     }

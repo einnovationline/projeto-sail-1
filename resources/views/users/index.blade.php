@@ -1,6 +1,6 @@
 @extends('layout.app')
 
-@section('title', 'Listagem dos Usuários')
+@section('title', 'Listagem de Usuários')
 
 @section('content')
     <h1>
@@ -31,4 +31,10 @@
             </li>
         @endforeach
     </ul>
+
+    <div class="py-4"><!--  py-4 dá uma margem  e o links irá construir na página a quantidade de páginas-->
+        {{ $users->appends(['search' => request()->get('search', '')])//esse appends irá persistir as informações para a próxima página
+        ->links() }}<!--  aqui deu erro pq peguei o $user => Call to undefined method App\Models\User::links()-->
+    </div>
+
 @endsection
