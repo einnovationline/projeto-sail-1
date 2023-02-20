@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreUpdateUserFormRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 use PhpParser\Builder\Use_;
 
 class UserController extends Controller{
@@ -21,8 +22,6 @@ class UserController extends Controller{
     public function index(Request $request){
         //irá gerar o sql
         //$users = User::where('name', 'LiKE', "%{$request->name}%")->tosql();
-        //dd($users);
-
         //dd($request->getQueryString());
         //$users = User::where('name', 'LiKE', "%{$request->name}%")->get();
 
@@ -68,7 +67,16 @@ class UserController extends Controller{
         if ($request->password)
             $data['password'] = bcrypt($request->password);
 
-        $user->update($data);
+        if ($request->image) {
+            if ($user->image && Storage::exists($user->image)){//pega se existe ou não o arquivo para o usuário
+                Storage::delete($user->image);
+            }
+
+            $data['image'] = $request->image->store('users');
+
+        }
+
+            $user->update($data);
 
         return redirect()->route('users.index');
     }
@@ -76,6 +84,13 @@ class UserController extends Controller{
     public function store(StoreUpdateUserFormRequest $request){
         $data = $request->all();
         $data['password'] = bcrypt($request->password);
+
+        if ($request->image) {//a coluna image irá receber o caminho abaixo, e salvar a imagem no caminho storage/app/public/users q será o nome da pasta criad
+            $data['image'] = $request->image->store('users');
+            //***para nomear uma imagem com a data atual, usa as linhas de código abaixo.
+            //$extension = $request->image->getClientOriginalExtension();
+            //$data['image'] = $request->image->storeAs('users', now() . ".{$extension}");
+        }
 
         $user = $this->model->create($data);
 

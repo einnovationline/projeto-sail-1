@@ -23,14 +23,16 @@ class CommentController extends Controller
         if (!$user = $this->user->find($userId)) {
             return redirect()->back();
         }
+        //dd($request->search);//pega o dado do index <input type="text" name="search" placeholder="Pesquisar">
 
-        //dd($request->search);//--> pega o dado do index <input type="text" name="search" placeholder="Pesquisar">
+        //com esse comments abaixo quis fazer = no user, mas ele trás todos os comentários tenho q arrumar o getComments*/
+        //$comments = $this->comment->getComments(search: $request->search ?? '');
+        //comments() é uma função do model User onde é referenciado q 1 usuário pode ter vários comentários
+        $comments = $user->comments()->where('body', 'LIKE', "%{$request->search}%")->get();//direto sem passar no model
+        //dd($comments);
 
-        $comments = $this->comment->getComments(search: $request->search ?? '');
-
-        //$comments = $user->comments()->where('body', 'LIKE', "%{$request->search}%")->get();
-//dd($comments);
-        return view('users.comments.index', compact('user', 'comments'));//pasta view users, subpasta comment e arquivo index.blade.php
+        //pasta view users, subpasta comment e arquivo index.blade.php
+        return view('users.comments.index', compact('user', 'comments'));
     }
 
     public function create($userId) {

@@ -32,7 +32,8 @@ class StoreUpdateUserFormRequest extends FormRequest {
         $rules = [
             'name' => 'required|string|max:255|min:5',
             'email' => ['required', 'email', "unique:users,email,{$id},id",],
-            'password' => ['required', 'min:5', 'max:15']
+            'password' => ['required', 'min:5', 'max:15',],
+            'image' => ['nullable', 'image', 'max:1024',],//não é obrigatório, tipo imagem, e tamanho máximo
         ];
 
         //verifica se o método é o put que faz o update, como está fazendo o update se estiver em branco não

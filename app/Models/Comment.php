@@ -27,6 +27,5 @@ class Comment extends Model {
 
         return $comments;
     }
-
-
 }
+//$comments = $user->comments()->where('body', 'LIKE', "%{$request->search}%")->get();//direto sem passar no model

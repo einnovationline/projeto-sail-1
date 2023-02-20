@@ -16,7 +16,12 @@
     <ul>
         @foreach ($users as $user)
             <li>
-                | <a href="{{ route('users.show', $user->id) }}">{{ $user->name}}</a>
+                @if ($user->image)
+                    <img src="{{ url("storage/{$user->image}") }}" alt="{{ $user->name }}" class="object-cover w-20">
+                @else
+                    <img src="{{ url("images/laravel.jpg") }}" alt="{{ $user->name }}" class="object-cover w-20">
+                 @endif
+                <a href="{{ route('users.show', $user->id) }}">{{ $user->name}}</a>
                 <form action="{{ route('users.edit', $user->id) }}" method="get">
                     <button type="submit">Editar</button>
                 </form>

@@ -10,7 +10,7 @@ with curly braces is no longer supported-->
 
     @include('includes.validations-form')
 
-    <form action="{{ route('users.update', $user->id) }}" method="post">
+    <form action="{{ route('users.update', $user->id) }}" method="post" enctype="multipart/form-data" >
         <!-- forma normal e abaixo a forma laravel <input type="hidden" name="_method" value="PUT"> Na rota ele é do tipo put, e como não existe form do tipo put é feito esse ajuste-->
         @method('PUT')
         @include('users._partials.form')<!--o conteúdo do form foi colocado nesse arquivo form.blade.php -->

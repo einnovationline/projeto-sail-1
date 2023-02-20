@@ -16,10 +16,11 @@ class User extends Authenticatable {
      *
      * @var array<int, string>
      */
-    protected $fillable = [
+    protected $fillable = [//aqui uso essas variáveis para peristir no banco
         'name',
         'email',
         'password',
+        'image',
     ];
 
     /**
@@ -46,14 +47,14 @@ class User extends Authenticatable {
                 $query->orWhere('name', 'LIKE', "%{$search}%");
             }
        })->with('comments')//está trazendo da function comments todos os comentários, não sendo necessária outras consultas.
-       //->get();aqui era antes da paginação
-       ->paginate(1);
+       //->get();//aqui era antes da paginação
+       ->paginate(2);
 
        return $users;
+
     }
 
     public function comments() {
-
         return $this->hasMany(Comment::class);//one to many --> 1 pra muitos, 1 user(model) tem vários comments
     }
 
