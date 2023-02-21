@@ -9,6 +9,11 @@
 <body>
 
     <div class="app">
+        <form action="{{ route('logout') }}" method="post">
+            @csrf
+            <button type="submit">Logout</button>
+        </form>
+        <a href="{{ route('register') }}">Cadastre-se</a>
         @yield('content')
     </div>
 
