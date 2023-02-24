@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>@yield('title') - Treinamento </title>
-</head>
-<body>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <title>@yield('title') - Treinamento </title>
 
-    <div class="app">
-        <form action="{{ route('logout') }}" method="post">
-            @csrf
-            <button type="submit">Logout</button>
-        </form>
-        <a href="{{ route('register') }}">Cadastre-se</a>
-        @yield('content')
-    </div>
+        <link rel="shortcut icon" href="{{ url('images/favicon.ico') }}" type="image/png">
 
-</body>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+
+    <body class="bg-gray-50">
+        <div class="container mx-auto px-4 py-8">
+            <form action="{{ route('logout') }}" method="post">
+                @csrf
+                <button type="submit" class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
+                    Logout
+                </button>
+            </form>
+            @yield('content')
+        </div>
+    </body>
+
 </html>
