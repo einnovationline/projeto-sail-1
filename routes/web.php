@@ -56,7 +56,7 @@ Route::get('/', function () {
 require __DIR__.'/auth.php';
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('inicio');
 });
 
 //a pasta início é definida agora após o breeze na pasta app/providers/RouteServiceProvider.php
