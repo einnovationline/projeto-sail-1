@@ -1,8 +1,8 @@
-@extends('layout.app')
+@extends('layout.app')<!-- pasta layout e arquivo app.blade.php-->
 
-@section('title', 'Listagem de Usuários')
+@section('title', 'Listagem de Usuários')<!-- na aba-->
 
-@section('content')
+@section('content')<!--no corpo da página, é uma sessão onde no app.blade.php é incluída-->
     <h1 class="text-2xl font-semibold leading-tigh py-2">
         Listagem dos Usuários Cadastrados
         <a href="{{ route('users.create')}}" class="bg-blue-900 rounded-full text-white px-4 text-sm"> inserir </a>

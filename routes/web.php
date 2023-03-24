@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller\ControleInicioController;
 use App\Http\Controllers\{
     UserController
 };
+use App\Http\Controllers\ControleSeriesController;
 use App\Http\Controllers\Admin\CommentController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
@@ -42,6 +44,12 @@ Route::middleware('auth')->group(function () {
     route::get('/users/create', [UserController::class, 'create'])->name('users.create');
     route::post('/users', [UserController::class, 'store'])->name('users.store');
     route::get('/users/{id}', [UserController::class, 'show'])->name('users.show');
+
+    route::get('/series', [ControleSeriesController::class, 'index'])->name('series.index');
+
+    route::get('/inicio', [ControleInicioController::class, 'index'])->name('inicio.index');
+
+
 });
 
 Route::get('/', function () {

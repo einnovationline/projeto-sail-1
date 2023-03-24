@@ -26,6 +26,7 @@
     Inserir o controle de séries através do link para entender melhor<br>
     Criar o acesso ao link de usuários... criar tipo perfil <br>
     Ver o tipo de trabalho solicitado pelas empresas e focar como fazer <br>
+    ajustar o home pra ir pra página inicio... <br>
 
     <table>
         <div>
@@ -37,7 +38,7 @@
                             </a>
                         </td>
                         <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-                            <a href="#" class="bg-green-200 rounded-full py-2 px-6">
+                            <a href="{{ route('series.index') }}" class="bg-green-200 rounded-full py-2 px-6">
                                 Controle de Séries
                             </a>
                         </td>
