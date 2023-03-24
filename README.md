@@ -6,6 +6,8 @@
 
 <img src="https://avatars.githubusercontent.com/u/112901428?s=400&u=e22d3f320aedbcda26c2f9b14b71d4f11556f475&v=4" width=115><br><sub></sub>
 
+Foco na aprendizagem no Laravel.
+
 <h2>Projeto de referência</h2>
 https://www.youtube.com/watch?v=R2lS_rORCQE
 
