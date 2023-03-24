@@ -6,7 +6,7 @@ with curly braces is no longer supported-->
 
 @section('content')
 
-    <h1>Editar Usuário {{ $user->name }}</h1>
+    <h1 class="text-2xl font-semibold leading-tigh py-2">Editar Usuário {{ $user->name }}</h1>
 
     @include('includes.validations-form')
 
@@ -14,6 +14,11 @@ with curly braces is no longer supported-->
         <!-- forma normal e abaixo a forma laravel <input type="hidden" name="_method" value="PUT"> Na rota ele é do tipo put, e como não existe form do tipo put é feito esse ajuste-->
         @method('PUT')
         @include('users._partials.form')<!--o conteúdo do form foi colocado nesse arquivo form.blade.php -->
+    </form>
+    <form action="{{ route('users.index') }}" metho="post">
+        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+            Voltar
+        </button>
     </form>
 
 @endsection
